@@ -1,8 +1,20 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { ImBackward2, ImPlay3, ImForward3 } from 'react-icons/im';
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
+  const BASE_URL = '../rain.mp3';
+  const [currentSong, setCurrentSong] = useState(null);
+  const inputRef = React.useRef();
+
+  useEffect(() => {
+    if (currentSong) {
+      inputRef.current.play();
+    }
+    console.log(currentSong);
+  }, [currentSong]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,11 +29,14 @@ export default function Home() {
         <p className={styles.description}>Let`s study with natural sounds</p>
 
         <div className={styles.buttonLists}>
-          <ImBackward2 className={styles.button} />
+          {/* <ImBackward2 className={styles.button} onClick /> */}
 
-          <ImPlay3 className={styles.button} />
+          <ImPlay3
+            className={styles.button}
+            onClick={() => inputRef.current.play()}
+          />
 
-          <ImForward3 className={styles.button} />
+          {/* <ImForward3 className={styles.button} onClick /> */}
         </div>
       </main>
     </div>
