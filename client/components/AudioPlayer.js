@@ -57,7 +57,7 @@ const AudioPlayer = () => {
           type='audio/mpeg'
           preload='metadata'
           loop
-          volume
+          volume='true'
         ></audio>
         <button className={styles.button} onClick={togglePlayPause}>
           {isPlaying ? <FaPause /> : <FaPlay />}
