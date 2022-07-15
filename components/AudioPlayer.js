@@ -10,11 +10,28 @@ const AudioPlayer = () => {
   // state
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // styles for chat room
+  const customStyles = {
+    overlay: {
+      backgroundColor: 'rgba(10, 11, 13, 0.75)',
+    },
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      color: '#0a0b0d',
+      transform: 'translate(-50%, -50%)',
+      padding: 0,
+      // border: 'none',
+    },
+  };
   // references
   const audioPlayer = useRef();
   const progressBar = useRef();
   const router = useRouter();
 
+  // functions
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
@@ -67,7 +84,7 @@ const AudioPlayer = () => {
       <Modal
         isOpen={!!router.query.chatroom}
         onRequestClose={() => router.push('/')}
-        // style={customStyles}
+        style={customStyles}
       >
         <ChatRoom />
       </Modal>
